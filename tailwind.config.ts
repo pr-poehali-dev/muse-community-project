@@ -62,16 +62,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				burgundy: '#6B1526',
-				gold: '#D4AF37',
-				champagne: '#F7E7CE',
-				darkBrown: '#1A0F0A',
-				cream: '#FAF6F0'
+				burgundy: '#8B2635',
+				gold: '#B8860B',
+				rose: '#FFF5F5',
+				slate: '#1E293B',
+				cream: '#FAFAF9'
 			},
 			fontFamily: {
-				serif: ['Playfair Display', 'serif'],
-				display: ['Cinzel', 'serif'],
-				sans: ['Montserrat', 'sans-serif']
+				serif: ['Fraunces', 'serif'],
+				sans: ['Inter', 'sans-serif']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
