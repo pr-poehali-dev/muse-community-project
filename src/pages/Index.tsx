@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useEffect, useState } from "react";
 
 const experts = [
   {
@@ -46,58 +47,137 @@ const experts = [
 ];
 
 export default function Index() {
+  const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50">
-        <div className="max-w-[1400px] mx-auto px-8 lg:px-16">
-          <div className="flex justify-between items-center h-24">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-burgundy/5 overflow-hidden">
+      <div 
+        className="fixed top-0 left-0 w-96 h-96 bg-burgundy/10 rounded-full blur-3xl pointer-events-none transition-all duration-1000 ease-out"
+        style={{
+          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`
+        }}
+      />
+      <div 
+        className="fixed bottom-0 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-3xl pointer-events-none transition-all duration-1000 ease-out"
+        style={{
+          transform: `translate(${-mousePosition.x * 0.015}px, ${-mousePosition.y * 0.015}px)`
+        }}
+      />
+
+      <nav className="fixed top-0 w-full bg-white/60 backdrop-blur-xl z-50 border-b border-white/20">
+        <div className="max-w-[1600px] mx-auto px-12 lg:px-20">
+          <div className="flex justify-between items-center h-28">
             <img 
               src="https://cdn.poehali.dev/files/7cc9e240-b9c5-48ca-9cd7-e402285e50ff.png" 
               alt="Muse Logo" 
-              className="h-20 w-auto"
+              className="h-20 w-auto hover:scale-105 transition-transform duration-300"
             />
-            <div className="hidden lg:flex items-center space-x-12">
-              <a href="#about" className="text-sm tracking-wide text-darkBlue/70 hover:text-burgundy transition-colors">О КЛУБЕ</a>
-              <a href="#mission" className="text-sm tracking-wide text-darkBlue/70 hover:text-burgundy transition-colors">МИССИЯ</a>
-              <a href="#experts" className="text-sm tracking-wide text-darkBlue/70 hover:text-burgundy transition-colors">ЭКСПЕРТЫ</a>
-              <a href="#contact" className="text-sm tracking-wide text-darkBlue/70 hover:text-burgundy transition-colors">КОНТАКТЫ</a>
+            <div className="hidden lg:flex items-center space-x-14">
+              <a href="#about" className="text-xs tracking-[0.2em] text-darkBlue/60 hover:text-burgundy transition-all duration-300 relative group">
+                О КЛУБЕ
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-burgundy group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a href="#mission" className="text-xs tracking-[0.2em] text-darkBlue/60 hover:text-burgundy transition-all duration-300 relative group">
+                МИССИЯ
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-burgundy group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a href="#experts" className="text-xs tracking-[0.2em] text-darkBlue/60 hover:text-burgundy transition-all duration-300 relative group">
+                ЭКСПЕРТЫ
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-burgundy group-hover:w-full transition-all duration-300"></span>
+              </a>
+              <a href="#contact" className="text-xs tracking-[0.2em] text-darkBlue/60 hover:text-burgundy transition-all duration-300 relative group">
+                КОНТАКТЫ
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-burgundy group-hover:w-full transition-all duration-300"></span>
+              </a>
             </div>
-            <Button className="bg-burgundy hover:bg-burgundy/90 text-white px-8 py-6 text-sm tracking-wide">
+            <Button className="bg-gradient-to-r from-burgundy to-burgundy/80 hover:from-burgundy/90 hover:to-burgundy/70 text-white px-10 py-7 text-xs tracking-[0.2em] shadow-lg hover:shadow-burgundy/30 hover:shadow-2xl transition-all duration-300 hover:scale-105">
               ВСТУПИТЬ
             </Button>
           </div>
         </div>
       </nav>
 
-      <section className="pt-48 pb-32 px-8 lg:px-16">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <div className="inline-block mb-8">
-                <span className="text-burgundy text-sm tracking-[0.3em] font-light">ЖЕНСКИЙ КЛУБ</span>
+      <section className="relative pt-52 pb-40 px-12 lg:px-20 overflow-hidden">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div 
+              className="relative z-10"
+              style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+            >
+              <div className="inline-block mb-10 px-6 py-3 bg-white/60 backdrop-blur-md rounded-full border border-burgundy/20">
+                <span className="text-burgundy text-xs tracking-[0.3em] font-medium flex items-center gap-2">
+                  <span className="w-2 h-2 bg-burgundy rounded-full animate-pulse"></span>
+                  ЖЕНСКИЙ КЛУБ ПРЕМИУМ-КЛАССА
+                </span>
               </div>
-              <h1 className="font-serif text-7xl lg:text-8xl font-light text-darkBlue mb-8 leading-[0.95]">
+              <h1 className="font-serif text-8xl lg:text-9xl font-light text-darkBlue mb-10 leading-[0.9] relative">
                 Muse
+                <div className="absolute -right-8 -top-8 w-32 h-32 bg-gold/20 rounded-full blur-2xl"></div>
               </h1>
-              <p className="text-xl text-darkBlue/60 leading-relaxed mb-12 max-w-xl">
-                Сообщество успешных женщин из сферы бизнеса, культуры, науки и искусства
+              <p className="text-2xl text-darkBlue/70 leading-relaxed mb-14 max-w-xl font-light">
+                Эксклюзивное сообщество успешных женщин из мира бизнеса, культуры и искусства
               </p>
               <div className="flex gap-6">
-                <Button size="lg" className="bg-burgundy hover:bg-burgundy/90 text-white px-10 py-7 text-sm tracking-wide">
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-burgundy via-burgundy to-burgundy/90 hover:from-burgundy/90 hover:to-burgundy text-white px-12 py-8 text-sm tracking-[0.2em] shadow-2xl hover:shadow-burgundy/40 transition-all duration-500 hover:scale-105 group"
+                >
                   ПРИСОЕДИНИТЬСЯ
+                  <Icon name="ArrowRight" className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
-                <Button size="lg" variant="outline" className="border-2 border-darkBlue/20 text-darkBlue hover:bg-darkBlue hover:text-white px-10 py-7 text-sm tracking-wide">
-                  УЗНАТЬ БОЛЬШЕ
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-2 border-darkBlue/20 text-darkBlue hover:bg-darkBlue hover:text-white hover:border-darkBlue px-12 py-8 text-sm tracking-[0.2em] backdrop-blur-sm bg-white/40 transition-all duration-300 hover:scale-105"
+                >
+                  ПОДРОБНЕЕ
                 </Button>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square bg-gradient-to-br from-burgundy/5 to-gold/10 rounded-full"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-8">
-                  <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
-                    <div className="text-5xl font-serif text-burgundy mb-2">8</div>
-                    <div className="text-sm tracking-wide text-darkBlue/60">ЭКСПЕРТОВ</div>
+            <div 
+              className="relative"
+              style={{ transform: `translateY(${-scrollY * 0.15}px)` }}
+            >
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-burgundy/20 via-gold/20 to-burgundy/10 rounded-[3rem] blur-2xl"></div>
+                <div className="relative aspect-square bg-white/40 backdrop-blur-xl rounded-[3rem] border border-white/60 p-12 shadow-2xl">
+                  <div className="grid grid-cols-2 gap-8 h-full">
+                    <div className="bg-gradient-to-br from-burgundy/10 to-transparent backdrop-blur-sm rounded-3xl p-8 flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                      <Icon name="Users" className="w-16 h-16 text-burgundy mb-4" />
+                      <div className="text-5xl font-serif text-burgundy mb-2">8</div>
+                      <div className="text-xs tracking-wider text-darkBlue/60">ЭКСПЕРТОВ</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-gold/10 to-transparent backdrop-blur-sm rounded-3xl p-8 flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                      <Icon name="Calendar" className="w-16 h-16 text-gold mb-4" />
+                      <div className="text-5xl font-serif text-gold mb-2">12</div>
+                      <div className="text-xs tracking-wider text-darkBlue/60">ВСТРЕЧ/ГОД</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-gold/10 to-transparent backdrop-blur-sm rounded-3xl p-8 flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                      <Icon name="Sparkles" className="w-16 h-16 text-burgundy mb-4" />
+                      <div className="text-5xl font-serif text-burgundy mb-2">24</div>
+                      <div className="text-xs tracking-wider text-darkBlue/60">ОНЛАЙН</div>
+                    </div>
+                    <div className="bg-gradient-to-br from-burgundy/10 to-transparent backdrop-blur-sm rounded-3xl p-8 flex flex-col justify-center items-center hover:scale-105 transition-transform duration-300">
+                      <Icon name="Award" className="w-16 h-16 text-gold mb-4" />
+                      <div className="text-5xl font-serif text-gold mb-2">VIP</div>
+                      <div className="text-xs tracking-wider text-darkBlue/60">СТАТУС</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -106,30 +186,44 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="about" className="py-32 px-8 lg:px-16 bg-gray-50/50">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid lg:grid-cols-12 gap-16">
+      <section id="about" className="relative py-40 px-12 lg:px-20">
+        <div 
+          className="absolute top-20 left-1/4 w-64 h-64 bg-burgundy/5 rounded-full blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+        ></div>
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid lg:grid-cols-12 gap-20">
             <div className="lg:col-span-5">
-              <span className="text-burgundy text-sm tracking-[0.3em] font-light mb-6 block">О КЛУБЕ</span>
-              <h2 className="font-serif text-5xl lg:text-6xl font-light text-darkBlue mb-8 leading-tight">
-                Пространство для роста
+              <div className="inline-block mb-8 px-5 py-2 bg-white/60 backdrop-blur-md rounded-full border border-burgundy/20">
+                <span className="text-burgundy text-xs tracking-[0.3em] font-medium">О КЛУБЕ</span>
+              </div>
+              <h2 className="font-serif text-7xl font-light text-darkBlue mb-10 leading-tight">
+                Пространство для роста и вдохновения
               </h2>
             </div>
-            <div className="lg:col-span-7">
-              <p className="text-lg text-darkBlue/70 leading-relaxed mb-6">
-                Клуб Muse объединяет талантливых женщин для совместного роста и развития. Мы создаём пространство, где каждая участница может черпать вдохновение, делиться опытом и находить поддержку среди единомышленников.
+            <div className="lg:col-span-7 space-y-8">
+              <p className="text-xl text-darkBlue/70 leading-relaxed">
+                Клуб Muse — это не просто сообщество. Это эксклюзивная экосистема для женщин, которые создают будущее в своих сферах.
               </p>
-              <p className="text-lg text-darkBlue/70 leading-relaxed mb-12">
-                Наши мероприятия охватывают не только бизнес, но и искусство, спорт, путешествия — всё, что делает жизнь насыщенной и гармоничной.
+              <p className="text-xl text-darkBlue/70 leading-relaxed">
+                Мы объединяем лидеров мнений, предпринимателей, художников и экспертов для создания уникальных коллабораций, обмена опытом и построения долгосрочных партнёрств.
               </p>
-              <div className="grid sm:grid-cols-2 gap-8">
-                <div className="border-l-2 border-burgundy pl-6">
-                  <div className="text-3xl font-serif text-burgundy mb-2">Статусное окружение</div>
-                  <p className="text-sm text-darkBlue/60">Нетворкинг на высшем уровне</p>
+              <div className="grid sm:grid-cols-2 gap-8 pt-8">
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-burgundy/10 to-transparent rounded-2xl group-hover:scale-105 transition-transform duration-300"></div>
+                  <div className="relative bg-white/60 backdrop-blur-sm border border-white/60 rounded-2xl p-8 shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                    <Icon name="Crown" className="w-12 h-12 text-burgundy mb-4" />
+                    <h3 className="text-2xl font-serif text-darkBlue mb-3">Статусное окружение</h3>
+                    <p className="text-darkBlue/60 leading-relaxed">Нетворкинг высшего уровня с лидерами индустрий</p>
+                  </div>
                 </div>
-                <div className="border-l-2 border-gold pl-6">
-                  <div className="text-3xl font-serif text-gold mb-2">Уникальные события</div>
-                  <p className="text-sm text-darkBlue/60">Баланс работы и жизни</p>
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-transparent rounded-2xl group-hover:scale-105 transition-transform duration-300"></div>
+                  <div className="relative bg-white/60 backdrop-blur-sm border border-white/60 rounded-2xl p-8 shadow-lg group-hover:shadow-2xl transition-all duration-300">
+                    <Icon name="Zap" className="w-12 h-12 text-gold mb-4" />
+                    <h3 className="text-2xl font-serif text-darkBlue mb-3">Уникальные события</h3>
+                    <p className="text-darkBlue/60 leading-relaxed">Закрытые мероприятия только для участниц</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -137,75 +231,99 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="mission" className="py-32 px-8 lg:px-16">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-20">
-            <span className="text-burgundy text-sm tracking-[0.3em] font-light mb-6 block">НАША МИССИЯ</span>
-            <h2 className="font-serif text-5xl lg:text-6xl font-light text-darkBlue max-w-3xl mx-auto leading-tight">
-              Объединяем сильных женщин для достижения большего
+      <section id="mission" className="relative py-40 px-12 lg:px-20 bg-gradient-to-br from-darkBlue via-darkBlue to-burgundy/20">
+        <div 
+          className="absolute top-40 right-1/4 w-96 h-96 bg-gold/10 rounded-full blur-3xl"
+          style={{ transform: `translateY(${-scrollY * 0.08}px)` }}
+        ></div>
+        <div className="max-w-[1600px] mx-auto relative z-10">
+          <div className="text-center mb-24">
+            <div className="inline-block mb-8 px-5 py-2 bg-white/10 backdrop-blur-md rounded-full border border-white/20">
+              <span className="text-gold text-xs tracking-[0.3em] font-medium">НАША МИССИЯ</span>
+            </div>
+            <h2 className="font-serif text-7xl font-light text-white max-w-4xl mx-auto leading-tight mb-8">
+              Создаём будущее вместе
             </h2>
+            <p className="text-xl text-white/60 max-w-3xl mx-auto leading-relaxed">
+              Объединяем сильных женщин для достижения невозможного
+            </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: "Users", title: "Создать сообщество", desc: "Динамичная сеть поддержки из различных сфер" },
-              { icon: "TrendingUp", title: "Поощрять развитие", desc: "Личный и профессиональный рост" },
-              { icon: "Sparkles", title: "Вдохновлять", desc: "Поддержка в стремлениях и достижениях" },
-              { icon: "Award", title: "Продвигать лидерство", desc: "Женщины в руководящих позициях" }
+              { icon: "Users", title: "Сообщество", desc: "Динамичная сеть поддержки из различных сфер", color: "burgundy" },
+              { icon: "TrendingUp", title: "Развитие", desc: "Личный и профессиональный рост", color: "gold" },
+              { icon: "Sparkles", title: "Вдохновение", desc: "Поддержка в стремлениях и достижениях", color: "burgundy" },
+              { icon: "Award", title: "Лидерство", desc: "Женщины в руководящих позициях", color: "gold" }
             ].map((goal, idx) => (
-              <Card key={idx} className="p-8 bg-white border-none shadow-lg hover:shadow-2xl transition-all duration-300 group">
-                <div className="w-16 h-16 rounded-full bg-burgundy/10 flex items-center justify-center mb-6 group-hover:bg-burgundy/20 transition-colors">
-                  <Icon name={goal.icon} className="w-8 h-8 text-burgundy" />
+              <div key={idx} className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl group-hover:scale-105 transition-transform duration-500"></div>
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/20 rounded-3xl p-10 hover:bg-white/10 transition-all duration-500 shadow-2xl">
+                  <div className={`w-20 h-20 rounded-2xl bg-${goal.color}/20 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500`}>
+                    <Icon name={goal.icon} className={`w-10 h-10 text-${goal.color === 'burgundy' ? 'burgundy' : 'gold'}`} />
+                  </div>
+                  <h3 className="font-serif text-3xl text-white mb-4">{goal.title}</h3>
+                  <p className="text-white/60 leading-relaxed">{goal.desc}</p>
                 </div>
-                <h3 className="font-serif text-2xl text-darkBlue mb-3">{goal.title}</h3>
-                <p className="text-darkBlue/60 leading-relaxed text-sm">{goal.desc}</p>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-32 px-8 lg:px-16 bg-darkBlue text-white">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <span className="text-gold text-sm tracking-[0.3em] font-light mb-6 block">ЦЕННОСТИ</span>
-              <h2 className="font-serif text-5xl lg:text-6xl font-light mb-12 leading-tight">
-                Что нас объединяет
-              </h2>
-              <div className="space-y-8">
-                {[
-                  { icon: "Heart", title: "Солидарность", text: "Поддержка и признание достижений каждой" },
-                  { icon: "Lightbulb", title: "Инновации", text: "Креативность и свежие идеи приветствуются" },
-                  { icon: "Scale", title: "Равноправие", text: "Равные возможности для всех участниц" },
-                  { icon: "Globe", title: "Открытость", text: "Разнообразие мнений и культурный обмен" }
-                ].map((value, idx) => (
-                  <div key={idx} className="flex items-start space-x-4 group">
-                    <div className="w-12 h-12 rounded-full bg-burgundy/20 flex items-center justify-center flex-shrink-0 group-hover:bg-burgundy/30 transition-colors">
-                      <Icon name={value.icon} className="w-6 h-6 text-gold" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif text-xl mb-2">{value.title}</h3>
-                      <p className="text-white/60 text-sm leading-relaxed">{value.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+      <section id="experts" className="relative py-40 px-12 lg:px-20">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="text-center mb-24">
+            <div className="inline-block mb-8 px-5 py-2 bg-white/60 backdrop-blur-md rounded-full border border-burgundy/20">
+              <span className="text-burgundy text-xs tracking-[0.3em] font-medium">НАШИ ЭКСПЕРТЫ</span>
             </div>
-            <div className="space-y-8">
-              {[
-                { icon: "Users", title: "Ежемесячные встречи", desc: "Панельные дискуссии и творческие воркшопы" },
-                { icon: "Video", title: "Онлайн-трансляции", desc: "Два раза в месяц: обмен знаниями и энергией" },
-                { icon: "Star", title: "Гостевые спикеры", desc: "Эксперты делятся опытом на экскурсиях" },
-                { icon: "Sparkles", title: "Творческие мероприятия", desc: "Искусство, музыка, новые форматы развития" }
-              ].map((format, idx) => (
-                <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gold/20 flex items-center justify-center">
-                      <Icon name={format.icon} className="w-6 h-6 text-gold" />
-                    </div>
-                    <h3 className="font-serif text-xl">{format.title}</h3>
+            <h2 className="font-serif text-7xl font-light text-darkBlue max-w-4xl mx-auto leading-tight">
+              Лидеры в своих областях
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {experts.map((expert, idx) => (
+              <div key={idx} className="group relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-burgundy/5 to-gold/5 rounded-3xl group-hover:scale-105 transition-transform duration-500"></div>
+                <div className="relative bg-white/60 backdrop-blur-sm border border-white/60 rounded-3xl p-8 shadow-lg group-hover:shadow-2xl transition-all duration-500">
+                  <div className="aspect-square bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-2xl mb-6 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-500">
+                    <Icon name="User" className="w-20 h-20 text-burgundy/40 group-hover:scale-110 transition-transform duration-500" />
                   </div>
-                  <p className="text-white/60 text-sm leading-relaxed">{format.desc}</p>
+                  <h3 className="font-serif text-xl text-darkBlue mb-2 leading-tight">{expert.name}</h3>
+                  <p className="text-burgundy text-sm font-medium mb-2">{expert.title}</p>
+                  <p className="text-darkBlue/50 text-xs leading-relaxed">{expert.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative py-40 px-12 lg:px-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-burgundy via-burgundy to-burgundy/80"></div>
+        <div 
+          className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gold/20 rounded-full blur-3xl"
+          style={{ transform: `translateY(${scrollY * 0.05}px)` }}
+        ></div>
+        <div className="max-w-[1200px] mx-auto text-center relative z-10">
+          <h2 className="font-serif text-7xl font-light mb-10 leading-tight text-white">
+            Станьте частью элиты
+          </h2>
+          <p className="text-2xl text-white/80 mb-16 leading-relaxed max-w-3xl mx-auto">
+            Присоединяйтесь к эксклюзивному сообществу успешных женщин
+          </p>
+          <Button 
+            size="lg" 
+            className="bg-white text-burgundy hover:bg-white/90 px-16 py-10 text-base tracking-[0.2em] shadow-2xl hover:shadow-white/30 hover:scale-110 transition-all duration-500 group"
+          >
+            ОСТАВИТЬ ЗАЯВКУ
+            <Icon name="Sparkles" className="ml-3 w-6 h-6 group-hover:rotate-12 transition-transform" />
+          </Button>
+          <div className="mt-24 pt-16 border-t border-white/20">
+            <p className="font-serif text-4xl mb-10 text-white/90">Вместе мы создаём историю</p>
+            <div className="flex justify-center gap-10">
+              {['Mail', 'Phone', 'Instagram'].map((icon) => (
+                <div key={icon} className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 hover:scale-110 transition-all duration-300 cursor-pointer">
+                  <Icon name={icon} className="w-6 h-6 text-gold" />
                 </div>
               ))}
             </div>
@@ -213,67 +331,22 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="experts" className="py-32 px-8 lg:px-16">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-20">
-            <span className="text-burgundy text-sm tracking-[0.3em] font-light mb-6 block">НАШИ ЭКСПЕРТЫ</span>
-            <h2 className="font-serif text-5xl lg:text-6xl font-light text-darkBlue max-w-3xl mx-auto leading-tight">
-              Лидеры в своих областях
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {experts.map((expert, idx) => (
-              <div key={idx} className="group">
-                <div className="aspect-square bg-gradient-to-br from-burgundy/10 to-gold/10 rounded-2xl mb-6 flex items-center justify-center overflow-hidden hover:shadow-2xl transition-all duration-300">
-                  <Icon name="User" className="w-24 h-24 text-burgundy/30 group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="font-serif text-xl text-darkBlue mb-2">{expert.name}</h3>
-                <p className="text-burgundy text-sm font-medium mb-2">{expert.title}</p>
-                <p className="text-darkBlue/50 text-xs">{expert.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="py-32 px-8 lg:px-16 bg-gradient-to-br from-burgundy to-burgundy/90">
-        <div className="max-w-[1000px] mx-auto text-center text-white">
-          <h2 className="font-serif text-5xl lg:text-6xl font-light mb-8 leading-tight">
-            Присоединяйтесь к нам
-          </h2>
-          <p className="text-xl text-white/80 mb-12 leading-relaxed max-w-2xl mx-auto">
-            Клуб Muse приглашает всех женщин, стремящихся к самосовершенствованию и желающих делиться своим вдохновением и талантами
-          </p>
-          <Button size="lg" className="bg-white text-burgundy hover:bg-white/90 px-12 py-8 text-base tracking-wide">
-            ОСТАВИТЬ ЗАЯВКУ
-          </Button>
-          <div className="mt-20 pt-12 border-t border-white/20">
-            <p className="font-serif text-3xl mb-8">Вместе мы можем достичь большего</p>
-            <div className="flex justify-center space-x-8">
-              <Icon name="Mail" className="w-6 h-6 text-gold" />
-              <Icon name="Phone" className="w-6 h-6 text-gold" />
-              <Icon name="Instagram" className="w-6 h-6 text-gold" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="bg-darkBlue text-white py-16 px-8 lg:px-16">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
+      <footer className="bg-darkBlue text-white py-20 px-12 lg:px-20 relative">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12">
             <img 
               src="https://cdn.poehali.dev/files/7cc9e240-b9c5-48ca-9cd7-e402285e50ff.png" 
               alt="Muse Logo" 
-              className="h-16 w-auto mb-8 md:mb-0 brightness-0 invert"
+              className="h-20 w-auto brightness-0 invert"
             />
-            <div className="flex space-x-12">
-              <a href="#about" className="text-sm tracking-wide text-white/60 hover:text-gold transition-colors">О клубе</a>
-              <a href="#mission" className="text-sm tracking-wide text-white/60 hover:text-gold transition-colors">Миссия</a>
-              <a href="#experts" className="text-sm tracking-wide text-white/60 hover:text-gold transition-colors">Эксперты</a>
+            <div className="flex gap-16">
+              <a href="#about" className="text-xs tracking-[0.2em] text-white/50 hover:text-gold transition-colors">О клубе</a>
+              <a href="#mission" className="text-xs tracking-[0.2em] text-white/50 hover:text-gold transition-colors">Миссия</a>
+              <a href="#experts" className="text-xs tracking-[0.2em] text-white/50 hover:text-gold transition-colors">Эксперты</a>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-white/10 text-center">
-            <p className="text-sm text-white/40">© 2025 Клуб Muse. Все права защищены.</p>
+          <div className="mt-16 pt-8 border-t border-white/10 text-center">
+            <p className="text-sm text-white/30 tracking-wide">© 2025 Клуб Muse. Все права защищены.</p>
           </div>
         </div>
       </footer>
