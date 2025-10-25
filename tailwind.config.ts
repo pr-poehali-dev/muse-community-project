@@ -65,7 +65,7 @@ export default {
 				burgundy: '#8B1538',
 				gold: '#D4AF37',
 				darkBlue: '#1A1F2C'
-			},,
+			},
 			fontFamily: {
 				serif: ['Cormorant Garamond', 'serif'],
 				sans: ['Montserrat', 'sans-serif']
