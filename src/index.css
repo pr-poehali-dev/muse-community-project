@@ -8,48 +8,31 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 210 11% 15%;
-
     --card: 0 0% 100%;
     --card-foreground: 210 11% 15%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 210 11% 15%;
-
     --primary: 345 80% 31%;
     --primary-foreground: 0 0% 100%;
-
     --secondary: 43 74% 52%;
     --secondary-foreground: 210 11% 15%;
-
     --muted: 210 11% 96%;
     --muted-foreground: 210 6% 46%;
-
     --accent: 43 74% 52%;
     --accent-foreground: 210 11% 15%;
-
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 98%;
-
     --border: 210 11% 90%;
     --input: 210 11% 90%;
     --ring: 345 80% 31%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 210 11% 15%;
-
     --sidebar-primary: 345 80% 31%;
-
     --sidebar-primary-foreground: 0 0% 100%;
-
     --sidebar-accent: 43 74% 52%;
-
     --sidebar-accent-foreground: 210 11% 15%;
-
     --sidebar-border: 210 11% 90%;
-
     --sidebar-ring: 345 80% 31%;
   }
 }
@@ -58,7 +41,6 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
