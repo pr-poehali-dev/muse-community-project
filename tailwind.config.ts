@@ -62,12 +62,15 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				burgundy: '#8B1538',
+				burgundy: '#6B1526',
 				gold: '#D4AF37',
-				darkBlue: '#1A1F2C'
+				champagne: '#F7E7CE',
+				darkBrown: '#1A0F0A',
+				cream: '#FAF6F0'
 			},
 			fontFamily: {
-				serif: ['Cormorant Garamond', 'serif'],
+				serif: ['Playfair Display', 'serif'],
+				display: ['Cinzel', 'serif'],
 				sans: ['Montserrat', 'sans-serif']
 			},
 			borderRadius: {

@@ -50,20 +50,20 @@ export default function Index() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-white">
-      <nav className="fixed top-0 w-full bg-white z-50 border-b border-gray-100">
-        <div className="max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="flex justify-between items-center h-20">
+    <div className="min-h-screen bg-darkBrown text-champagne">
+      <nav className="fixed top-0 w-full bg-darkBrown/95 backdrop-blur-sm z-50 border-b border-gold/20">
+        <div className="max-w-[1600px] mx-auto px-8 lg:px-16">
+          <div className="flex justify-between items-center h-24">
             <img 
               src="https://cdn.poehali.dev/files/7cc9e240-b9c5-48ca-9cd7-e402285e50ff.png" 
               alt="Muse Logo" 
-              className="h-14 w-auto"
+              className="h-16 w-auto brightness-0 invert opacity-90"
             />
-            <div className="hidden md:flex items-center gap-10">
-              <a href="#about" className="text-sm font-medium text-gray-600 hover:text-burgundy transition-colors">О клубе</a>
-              <a href="#mission" className="text-sm font-medium text-gray-600 hover:text-burgundy transition-colors">Миссия</a>
-              <a href="#experts" className="text-sm font-medium text-gray-600 hover:text-burgundy transition-colors">Эксперты</a>
-              <Button className="bg-burgundy hover:bg-burgundy/90 text-white rounded-full px-8">
+            <div className="hidden md:flex items-center gap-12">
+              <a href="#about" className="text-xs uppercase tracking-[0.2em] text-champagne/60 hover:text-gold transition-all font-sans">О клубе</a>
+              <a href="#mission" className="text-xs uppercase tracking-[0.2em] text-champagne/60 hover:text-gold transition-all font-sans">Миссия</a>
+              <a href="#experts" className="text-xs uppercase tracking-[0.2em] text-champagne/60 hover:text-gold transition-all font-sans">Эксперты</a>
+              <Button className="bg-gold hover:bg-gold/90 text-darkBrown text-xs uppercase tracking-widest px-8 h-12 font-semibold">
                 Вступить
               </Button>
             </div>
@@ -71,171 +71,186 @@ export default function Index() {
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-b from-burgundy/5 to-white">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-burgundy/10 text-burgundy px-4 py-2 rounded-full text-sm font-semibold mb-8">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-burgundy opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-burgundy"></span>
-                </span>
-                Женский клуб премиум-класса
-              </div>
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-darkBlue mb-6 leading-none">
-                Muse
-              </h1>
-              <p className="text-xl sm:text-2xl text-gray-600 mb-10 leading-relaxed">
-                Сообщество успешных женщин из мира бизнеса, культуры и искусства
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-burgundy hover:bg-burgundy/90 text-white text-base px-10 py-6 rounded-full shadow-lg hover:shadow-xl transition-all">
-                  Присоединиться
-                  <Icon name="ArrowRight" className="ml-2 w-5 h-5" />
-                </Button>
-                <Button size="lg" variant="outline" className="border-2 border-gray-300 hover:border-burgundy hover:text-burgundy text-base px-10 py-6 rounded-full">
-                  Узнать больше
-                </Button>
-              </div>
-              <div className="grid grid-cols-3 gap-6 mt-12 pt-12 border-t border-gray-200">
-                <div>
-                  <div className="text-4xl font-bold text-burgundy mb-1">8</div>
-                  <div className="text-sm text-gray-600">Экспертов</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-burgundy mb-1">12</div>
-                  <div className="text-sm text-gray-600">Встреч/год</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-burgundy mb-1">24</div>
-                  <div className="text-sm text-gray-600">Онлайн</div>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-burgundy/20 to-gold/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-white rounded-3xl shadow-2xl p-12 border border-gray-100">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-burgundy/5 rounded-2xl p-6 text-center hover:bg-burgundy/10 transition-colors">
-                    <Icon name="Users" className="w-12 h-12 text-burgundy mx-auto mb-3" />
-                    <div className="text-sm font-semibold text-gray-700">Нетворкинг</div>
-                  </div>
-                  <div className="bg-gold/5 rounded-2xl p-6 text-center hover:bg-gold/10 transition-colors">
-                    <Icon name="Sparkles" className="w-12 h-12 text-gold mx-auto mb-3" />
-                    <div className="text-sm font-semibold text-gray-700">Вдохновение</div>
-                  </div>
-                  <div className="bg-gold/5 rounded-2xl p-6 text-center hover:bg-gold/10 transition-colors">
-                    <Icon name="TrendingUp" className="w-12 h-12 text-gold mx-auto mb-3" />
-                    <div className="text-sm font-semibold text-gray-700">Рост</div>
-                  </div>
-                  <div className="bg-burgundy/5 rounded-2xl p-6 text-center hover:bg-burgundy/10 transition-colors">
-                    <Icon name="Award" className="w-12 h-12 text-burgundy mx-auto mb-3" />
-                    <div className="text-sm font-semibold text-gray-700">Премиум</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="py-24 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-[1400px] mx-auto">
+      <section className="pt-40 pb-32 px-8 lg:px-16 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-gold/5 via-transparent to-transparent"></div>
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-burgundy/10 to-transparent"></div>
+        
+        <div className="max-w-[1600px] mx-auto relative">
           <div className="grid lg:grid-cols-2 gap-20 items-center">
             <div>
-              <div className="text-burgundy text-sm font-bold uppercase tracking-wider mb-4">О клубе</div>
-              <h2 className="text-5xl font-bold text-darkBlue mb-6 leading-tight">
-                Пространство для роста и развития
-              </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Клуб Muse объединяет талантливых женщин для совместного роста и развития. Мы создаём пространство, где каждая участница может черпать вдохновение и находить поддержку.
+              <div className="inline-flex items-center gap-3 border border-gold/30 px-6 py-3 mb-12">
+                <div className="w-1 h-1 bg-gold"></div>
+                <span className="text-[10px] uppercase tracking-[0.25em] text-gold font-sans">Премиальное членство</span>
+              </div>
+              
+              <h1 className="font-display text-8xl lg:text-9xl font-bold text-champagne mb-8 leading-none tracking-tight">
+                MUSE
+              </h1>
+              
+              <div className="w-24 h-[1px] bg-gold mb-8"></div>
+              
+              <p className="font-serif text-2xl lg:text-3xl text-champagne/80 mb-12 leading-relaxed italic">
+                Элитарное сообщество для женщин,<br />определяющих культуру и бизнес
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Наши мероприятия охватывают бизнес, искусство, спорт и путешествия — всё для гармоничной и насыщенной жизни.
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="flex -space-x-3">
-                  {[1,2,3,4].map((i) => (
-                    <div key={i} className="w-12 h-12 rounded-full bg-gradient-to-br from-burgundy to-gold border-2 border-white"></div>
-                  ))}
+              
+              <div className="flex flex-col sm:flex-row gap-6 mb-16">
+                <Button size="lg" className="bg-gold hover:bg-gold/80 text-darkBrown text-xs uppercase tracking-[0.2em] px-12 h-14 font-semibold transition-all">
+                  Присоединиться
+                </Button>
+                <Button size="lg" variant="outline" className="border border-champagne/30 hover:border-gold hover:bg-gold/10 text-champagne text-xs uppercase tracking-[0.2em] px-12 h-14 font-semibold">
+                  Подробнее
+                </Button>
+              </div>
+              
+              <div className="grid grid-cols-3 gap-8 pt-8 border-t border-champagne/10">
+                <div>
+                  <div className="font-display text-5xl text-gold mb-2">8</div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-champagne/50 font-sans">Экспертов</div>
                 </div>
-                <div className="text-sm text-gray-600">
-                  <span className="font-bold text-burgundy">50+</span> участниц уже с нами
+                <div>
+                  <div className="font-display text-5xl text-gold mb-2">12</div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-champagne/50 font-sans">Встреч/год</div>
+                </div>
+                <div>
+                  <div className="font-display text-5xl text-gold mb-2">24</div>
+                  <div className="text-[10px] uppercase tracking-[0.2em] text-champagne/50 font-sans">Онлайн</div>
                 </div>
               </div>
             </div>
+            
+            <div className="relative">
+              <div className="absolute inset-0 border border-gold/20"></div>
+              <div className="absolute -inset-4 border border-gold/10"></div>
+              <div className="relative bg-darkBrown/50 backdrop-blur-sm p-16 border border-gold/30">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="group cursor-pointer">
+                    <div className="border border-champagne/20 p-8 h-full flex flex-col items-center justify-center text-center transition-all group-hover:border-gold/50 group-hover:bg-gold/5">
+                      <Icon name="Users" className="w-12 h-12 text-gold mb-4" />
+                      <div className="text-xs uppercase tracking-[0.15em] text-champagne/70 font-sans">Нетворкинг</div>
+                    </div>
+                  </div>
+                  <div className="group cursor-pointer">
+                    <div className="border border-champagne/20 p-8 h-full flex flex-col items-center justify-center text-center transition-all group-hover:border-gold/50 group-hover:bg-gold/5">
+                      <Icon name="Sparkles" className="w-12 h-12 text-gold mb-4" />
+                      <div className="text-xs uppercase tracking-[0.15em] text-champagne/70 font-sans">Вдохновение</div>
+                    </div>
+                  </div>
+                  <div className="group cursor-pointer">
+                    <div className="border border-champagne/20 p-8 h-full flex flex-col items-center justify-center text-center transition-all group-hover:border-gold/50 group-hover:bg-gold/5">
+                      <Icon name="TrendingUp" className="w-12 h-12 text-gold mb-4" />
+                      <div className="text-xs uppercase tracking-[0.15em] text-champagne/70 font-sans">Развитие</div>
+                    </div>
+                  </div>
+                  <div className="group cursor-pointer">
+                    <div className="border border-champagne/20 p-8 h-full flex flex-col items-center justify-center text-center transition-all group-hover:border-gold/50 group-hover:bg-gold/5">
+                      <Icon name="Award" className="w-12 h-12 text-gold mb-4" />
+                      <div className="text-xs uppercase tracking-[0.15em] text-champagne/70 font-sans">Премиум</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="py-32 px-8 lg:px-16 bg-gradient-to-b from-burgundy/20 to-transparent">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
+              <div className="text-gold text-[10px] uppercase tracking-[0.3em] mb-8 font-sans">О клубе</div>
+              <h2 className="font-display text-6xl font-bold text-champagne mb-10 leading-tight">
+                Эксклюзивное пространство для избранных
+              </h2>
+              <div className="w-16 h-[1px] bg-gold/50 mb-8"></div>
+              <p className="font-serif text-xl text-champagne/70 mb-6 leading-relaxed italic">
+                Клуб Muse — это закрытое сообщество успешных женщин, объединённых стремлением к совершенству в бизнесе, искусстве и личностном росте.
+              </p>
+              <p className="font-sans text-sm text-champagne/60 mb-12 leading-relaxed">
+                Наши мероприятия созданы для тех, кто ценит качество, эксклюзивность и подлинные связи. Здесь встречаются лидеры мнений, предприниматели и деятели искусства.
+              </p>
+            </div>
+            
             <div className="grid sm:grid-cols-2 gap-6">
-              <Card className="p-8 border-none shadow-lg bg-burgundy text-white hover:shadow-xl transition-shadow">
-                <Icon name="Crown" className="w-12 h-12 mb-4" />
-                <h3 className="text-xl font-bold mb-3">Статусное окружение</h3>
-                <p className="text-white/80 text-sm leading-relaxed">Нетворкинг высшего уровня</p>
+              <Card className="bg-transparent border border-gold/30 p-10 hover:bg-gold/5 transition-all group">
+                <Icon name="Crown" className="w-10 h-10 text-gold mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="font-display text-xl font-bold text-champagne mb-4 tracking-tight">Элитное окружение</h3>
+                <p className="text-champagne/60 text-xs leading-relaxed uppercase tracking-wider font-sans">Нетворкинг высшего уровня</p>
               </Card>
-              <Card className="p-8 border-none shadow-lg hover:shadow-xl transition-shadow">
-                <Icon name="Calendar" className="w-12 h-12 text-burgundy mb-4" />
-                <h3 className="text-xl font-bold text-darkBlue mb-3">Регулярные встречи</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Каждый месяц новые события</p>
+              
+              <Card className="bg-transparent border border-champagne/20 p-10 hover:border-gold/30 hover:bg-gold/5 transition-all group">
+                <Icon name="Calendar" className="w-10 h-10 text-gold mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="font-display text-xl font-bold text-champagne mb-4 tracking-tight">Регулярность</h3>
+                <p className="text-champagne/60 text-xs leading-relaxed uppercase tracking-wider font-sans">Ежемесячные события</p>
               </Card>
-              <Card className="p-8 border-none shadow-lg hover:shadow-xl transition-shadow">
-                <Icon name="Zap" className="w-12 h-12 text-gold mb-4" />
-                <h3 className="text-xl font-bold text-darkBlue mb-3">Закрытый формат</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Только для участниц клуба</p>
+              
+              <Card className="bg-transparent border border-champagne/20 p-10 hover:border-gold/30 hover:bg-gold/5 transition-all group">
+                <Icon name="Lock" className="w-10 h-10 text-gold mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="font-display text-xl font-bold text-champagne mb-4 tracking-tight">Приватность</h3>
+                <p className="text-champagne/60 text-xs leading-relaxed uppercase tracking-wider font-sans">Только для участниц</p>
               </Card>
-              <Card className="p-8 border-none shadow-lg bg-gold text-white hover:shadow-xl transition-shadow">
-                <Icon name="Heart" className="w-12 h-12 mb-4" />
-                <h3 className="text-xl font-bold mb-3">Поддержка</h3>
-                <p className="text-white/80 text-sm leading-relaxed">Сильное женское сообщество</p>
+              
+              <Card className="bg-transparent border border-gold/30 p-10 hover:bg-gold/5 transition-all group">
+                <Icon name="Heart" className="w-10 h-10 text-gold mb-6 group-hover:scale-110 transition-transform" />
+                <h3 className="font-display text-xl font-bold text-champagne mb-4 tracking-tight">Поддержка</h3>
+                <p className="text-champagne/60 text-xs leading-relaxed uppercase tracking-wider font-sans">Сильное сообщество</p>
               </Card>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="mission" className="py-24 px-6 sm:px-8 lg:px-12 bg-darkBlue text-white">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-16">
-            <div className="text-gold text-sm font-bold uppercase tracking-wider mb-4">Наша миссия</div>
-            <h2 className="text-5xl font-bold mb-6 max-w-3xl mx-auto leading-tight">
-              Объединяем сильных женщин для достижения большего
+      <section id="mission" className="py-32 px-8 lg:px-16 relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-burgundy/10 to-transparent"></div>
+        
+        <div className="max-w-[1600px] mx-auto relative">
+          <div className="text-center mb-20">
+            <div className="text-gold text-[10px] uppercase tracking-[0.3em] mb-8 font-sans">Наша миссия</div>
+            <h2 className="font-display text-6xl font-bold text-champagne mb-8 max-w-4xl mx-auto leading-tight">
+              Объединение лидеров для создания наследия
             </h2>
+            <div className="w-24 h-[1px] bg-gold/50 mx-auto"></div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "Users", title: "Сообщество", desc: "Динамичная сеть поддержки из различных сфер" },
-              { icon: "TrendingUp", title: "Развитие", desc: "Личный и профессиональный рост" },
-              { icon: "Sparkles", title: "Вдохновение", desc: "Поддержка в стремлениях и достижениях" },
+              { icon: "Users", title: "Сообщество", desc: "Динамичная сеть из бизнеса, культуры и искусства" },
+              { icon: "TrendingUp", title: "Развитие", desc: "Личностный и профессиональный рост" },
+              { icon: "Sparkles", title: "Вдохновение", desc: "Поддержка в амбициозных стремлениях" },
               { icon: "Award", title: "Лидерство", desc: "Женщины в руководящих позициях" }
             ].map((goal, idx) => (
-              <Card key={idx} className="bg-white/5 border-white/10 p-8 hover:bg-white/10 transition-all">
-                <div className="w-14 h-14 rounded-xl bg-burgundy/20 flex items-center justify-center mb-6">
-                  <Icon name={goal.icon} className="w-7 h-7 text-burgundy" />
+              <Card key={idx} className="bg-transparent border border-champagne/20 p-10 hover:border-gold/40 hover:bg-gold/5 transition-all">
+                <div className="border border-gold/30 w-14 h-14 flex items-center justify-center mb-8">
+                  <Icon name={goal.icon} className="w-7 h-7 text-gold" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">{goal.title}</h3>
-                <p className="text-white/70 text-sm leading-relaxed">{goal.desc}</p>
+                <h3 className="font-display text-xl font-bold text-champagne mb-4 tracking-tight">{goal.title}</h3>
+                <p className="text-champagne/60 text-xs leading-relaxed uppercase tracking-wide font-sans">{goal.desc}</p>
               </Card>
             ))}
           </div>
           
-          <div className="mt-20 grid md:grid-cols-2 gap-8">
-            <div className="bg-white/5 rounded-2xl p-10 border border-white/10">
-              <Icon name="Heart" className="w-12 h-12 text-gold mb-6" />
-              <h3 className="text-2xl font-bold mb-4">Ценности</h3>
-              <ul className="space-y-4">
+          <div className="mt-24 grid md:grid-cols-2 gap-12">
+            <div className="border border-champagne/20 p-12">
+              <Icon name="Heart" className="w-10 h-10 text-gold mb-8" />
+              <h3 className="font-display text-3xl font-bold text-champagne mb-8 tracking-tight">Ценности</h3>
+              <ul className="space-y-6">
                 {['Солидарность', 'Инновации', 'Равноправие', 'Открытость'].map((value) => (
-                  <li key={value} className="flex items-center gap-3 text-white/80">
-                    <div className="w-2 h-2 rounded-full bg-burgundy"></div>
+                  <li key={value} className="flex items-center gap-4 text-champagne/70 font-serif text-lg italic">
+                    <div className="w-2 h-2 border border-gold"></div>
                     {value}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="bg-white/5 rounded-2xl p-10 border border-white/10">
-              <Icon name="Calendar" className="w-12 h-12 text-burgundy mb-6" />
-              <h3 className="text-2xl font-bold mb-4">Форматы встреч</h3>
-              <ul className="space-y-4">
+            
+            <div className="border border-gold/30 p-12 bg-gold/5">
+              <Icon name="Calendar" className="w-10 h-10 text-gold mb-8" />
+              <h3 className="font-display text-3xl font-bold text-champagne mb-8 tracking-tight">Форматы встреч</h3>
+              <ul className="space-y-6">
                 {['Ежемесячные встречи ОЧНО', 'Онлайн-трансляции 2 раза/месяц', 'Гостевые спикеры', 'Творческие мероприятия'].map((format) => (
-                  <li key={format} className="flex items-center gap-3 text-white/80">
-                    <Icon name="Check" className="w-5 h-5 text-gold flex-shrink-0" />
-                    <span className="text-sm">{format}</span>
+                  <li key={format} className="flex items-start gap-4 text-champagne/70">
+                    <Icon name="Check" className="w-5 h-5 text-gold flex-shrink-0 mt-0.5" />
+                    <span className="text-xs uppercase tracking-wide font-sans">{format}</span>
                   </li>
                 ))}
               </ul>
@@ -244,31 +259,35 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="experts" className="py-24 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-16">
-            <div className="text-burgundy text-sm font-bold uppercase tracking-wider mb-4">Наши эксперты</div>
-            <h2 className="text-5xl font-bold text-darkBlue mb-6">
+      <section id="experts" className="py-32 px-8 lg:px-16">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="text-center mb-20">
+            <div className="text-gold text-[10px] uppercase tracking-[0.3em] mb-8 font-sans">Наши эксперты</div>
+            <h2 className="font-display text-6xl font-bold text-champagne mb-8">
               Лидеры в своих областях
             </h2>
+            <div className="w-24 h-[1px] bg-gold/50 mx-auto"></div>
           </div>
+          
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {experts.map((expert, idx) => (
               <Card 
                 key={idx} 
-                className={`border-none shadow-lg hover:shadow-2xl transition-all cursor-pointer ${
-                  hoveredCard === idx ? 'scale-105' : ''
+                className={`bg-transparent border transition-all cursor-pointer ${
+                  hoveredCard === idx 
+                    ? 'border-gold/50 bg-gold/5' 
+                    : 'border-champagne/20 hover:border-gold/30'
                 }`}
                 onMouseEnter={() => setHoveredCard(idx)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
-                <div className="aspect-square bg-gradient-to-br from-burgundy/10 to-gold/10 flex items-center justify-center rounded-t-lg">
-                  <Icon name="User" className="w-20 h-20 text-burgundy/40" />
+                <div className="aspect-square border-b border-champagne/20 flex items-center justify-center bg-gradient-to-br from-burgundy/20 to-transparent">
+                  <Icon name="User" className="w-16 h-16 text-gold/40" />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-darkBlue mb-2 text-lg leading-tight">{expert.name}</h3>
-                  <p className="text-burgundy text-sm font-semibold mb-2">{expert.title}</p>
-                  <p className="text-gray-500 text-xs leading-relaxed">{expert.description}</p>
+                <div className="p-8">
+                  <h3 className="font-serif font-bold text-champagne mb-3 text-lg leading-tight italic">{expert.name}</h3>
+                  <p className="text-gold text-xs font-semibold mb-3 uppercase tracking-wider font-sans">{expert.title}</p>
+                  <p className="text-champagne/50 text-xs leading-relaxed font-sans">{expert.description}</p>
                 </div>
               </Card>
             ))}
@@ -276,23 +295,28 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contact" className="py-24 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-burgundy to-burgundy/90 text-white">
-        <div className="max-w-[1000px] mx-auto text-center">
-          <h2 className="text-5xl font-bold mb-6">
-            Присоединяйтесь к нам
+      <section id="contact" className="py-32 px-8 lg:px-16 bg-gradient-to-b from-burgundy/30 to-burgundy/20 relative">
+        <div className="absolute inset-0 border-t border-b border-gold/20"></div>
+        
+        <div className="max-w-[1000px] mx-auto text-center relative">
+          <h2 className="font-display text-7xl font-bold text-champagne mb-8 tracking-tight">
+            Станьте частью элиты
           </h2>
-          <p className="text-xl text-white/90 mb-12 leading-relaxed">
-            Клуб Muse приглашает всех женщин, стремящихся к самосовершенствованию
+          <div className="w-24 h-[1px] bg-gold mx-auto mb-12"></div>
+          <p className="font-serif text-2xl text-champagne/80 mb-16 leading-relaxed italic">
+            Клуб Muse приглашает женщин,<br />стремящихся к совершенству
           </p>
-          <Button size="lg" className="bg-white text-burgundy hover:bg-white/90 text-lg px-12 py-7 rounded-full shadow-2xl hover:scale-105 transition-all">
+          
+          <Button size="lg" className="bg-gold hover:bg-gold/80 text-darkBrown text-xs uppercase tracking-[0.2em] px-16 h-16 font-semibold transition-all">
             Оставить заявку
           </Button>
-          <div className="mt-16 pt-16 border-t border-white/20">
-            <p className="text-2xl font-bold mb-8">Вместе мы можем достичь большего</p>
-            <div className="flex justify-center gap-6">
+          
+          <div className="mt-24 pt-16 border-t border-champagne/20">
+            <p className="font-display text-2xl text-champagne mb-12 tracking-tight">Вместе мы создаём историю</p>
+            <div className="flex justify-center gap-8">
               {['Mail', 'Phone', 'Instagram'].map((icon) => (
-                <div key={icon} className="w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors cursor-pointer">
-                  <Icon name={icon} className="w-6 h-6" />
+                <div key={icon} className="w-12 h-12 border border-champagne/30 hover:border-gold hover:bg-gold/10 flex items-center justify-center transition-all cursor-pointer">
+                  <Icon name={icon} className="w-5 h-5 text-gold" />
                 </div>
               ))}
             </div>
@@ -300,22 +324,22 @@ export default function Index() {
         </div>
       </section>
 
-      <footer className="bg-darkBlue text-white py-16 px-6 sm:px-8 lg:px-12">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+      <footer className="bg-darkBrown py-20 px-8 lg:px-16 border-t border-gold/20">
+        <div className="max-w-[1600px] mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12">
             <img 
               src="https://cdn.poehali.dev/files/7cc9e240-b9c5-48ca-9cd7-e402285e50ff.png" 
               alt="Muse Logo" 
-              className="h-16 w-auto brightness-0 invert"
+              className="h-20 w-auto brightness-0 invert opacity-70"
             />
-            <div className="flex gap-8">
-              <a href="#about" className="text-sm text-white/60 hover:text-white transition-colors">О клубе</a>
-              <a href="#mission" className="text-sm text-white/60 hover:text-white transition-colors">Миссия</a>
-              <a href="#experts" className="text-sm text-white/60 hover:text-white transition-colors">Эксперты</a>
+            <div className="flex gap-12">
+              <a href="#about" className="text-[10px] uppercase tracking-[0.2em] text-champagne/40 hover:text-gold transition-all font-sans">О клубе</a>
+              <a href="#mission" className="text-[10px] uppercase tracking-[0.2em] text-champagne/40 hover:text-gold transition-all font-sans">Миссия</a>
+              <a href="#experts" className="text-[10px] uppercase tracking-[0.2em] text-champagne/40 hover:text-gold transition-all font-sans">Эксперты</a>
             </div>
           </div>
-          <div className="mt-12 pt-8 border-t border-white/10 text-center">
-            <p className="text-sm text-white/40">© 2025 Клуб Muse. Все права защищены.</p>
+          <div className="mt-16 pt-12 border-t border-champagne/10 text-center">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-champagne/30 font-sans">© 2025 Клуб Muse. Все права защищены.</p>
           </div>
         </div>
       </footer>
